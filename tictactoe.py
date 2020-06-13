@@ -8,6 +8,14 @@ X = "X"
 O = "O"
 EMPTY = None
 
+def call_counter(func):
+    def helper(*args, **kwargs):
+        helper.calls += 1
+        return func(*args, **kwargs)
+    helper.calls = 0
+    helper.__name__= func.__name__
+
+    return helper
 
 def initial_state():
     """
@@ -17,11 +25,13 @@ def initial_state():
             [EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY]]
 
-
+@call_counter
 def player(board):
     """
     Returns player who has the next turn on a board.
     """
+
+
     raise NotImplementedError
 
 
