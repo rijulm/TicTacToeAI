@@ -3,6 +3,7 @@ Tic Tac Toe Player
 """
 
 import math
+import copy
 
 X = "X"
 O = "O"
@@ -48,7 +49,7 @@ def actions(board):
     possiblemoves = []
     for i in range(3):
         for j in range(3):
-            if board[i][j] != EMPTY:
+            if board[i][j] == EMPTY:
                 possiblemoves.append((i,j))
 
     # raise NotImplementedError
@@ -59,6 +60,11 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
+    newboard = copy.deepcopy(board)
+
+
+
+
     raise NotImplementedError
 
 
