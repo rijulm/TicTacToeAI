@@ -30,16 +30,29 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
+    if board == initial_state():
+        return X
 
+    elif player.calls % 2 == 0:
+        return O
+    else:
+        return X
 
-    raise NotImplementedError
+    # raise NotImplementedError
 
 
 def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
+    possiblemoves = []
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] != EMPTY:
+                possiblemoves.append((i,j))
+
+    # raise NotImplementedError
+    return set(possiblemoves)
 
 
 def result(board, action):
