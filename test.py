@@ -4,6 +4,10 @@ a = [[EMPTY, EMPTY, EMPTY],
     [EMPTY, EMPTY, EMPTY],
      [EMPTY, EMPTY, EMPTY]]
 
-from tictactoe import actions
+action = (1,0)
+from tictactoe import actions, result
 print(actions(a))
+
+print(result(a, action))
+print(result(result(a, action), action))
 

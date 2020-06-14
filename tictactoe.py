@@ -9,14 +9,18 @@ X = "X"
 O = "O"
 EMPTY = None
 
+
 def call_counter(func):
     def helper(*args, **kwargs):
         helper.calls += 1
         return func(*args, **kwargs)
+
+
     helper.calls = 0
-    helper.__name__= func.__name__
+    helper.__name__ = func.__name__
 
     return helper
+
 
 def initial_state():
     """
@@ -25,6 +29,7 @@ def initial_state():
     return [[EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY]]
+
 
 @call_counter
 def player(board):
@@ -50,10 +55,14 @@ def actions(board):
     for i in range(3):
         for j in range(3):
             if board[i][j] == EMPTY:
-                possiblemoves.append((i,j))
+                possiblemoves.append((i, j))
 
     # raise NotImplementedError
     return set(possiblemoves)
+
+
+class IllegalMove(Exception):
+    pass
 
 
 def result(board, action):
@@ -62,10 +71,16 @@ def result(board, action):
     """
     newboard = copy.deepcopy(board)
 
+    piece = player(board)
+    if newboard[action[0]][action[1]] != EMPTY:
+        print('error found')
+        raise IllegalMove
 
 
+    else:
+        newboard[action[0]][action[1]] = piece
 
-    raise NotImplementedError
+    return newboard
 
 
 def winner(board):
