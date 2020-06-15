@@ -87,7 +87,28 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    raise NotImplementedError
+    # first we can check horizontally
+    for row in board:
+        if len(set(row)) == 1:
+            return row[0]
+
+    # check diagonally
+    if board[0][0] == board[1][1] and board[1][1] ==  board[2][2] and board[0][0] == board[2][2]:
+        # first diagonal
+        return board[0][0]
+    if board[0][2] == board[1][1] and board[1][1] ==  board[2][0] and board[0][2] == board[2][0]:
+        # second diagonal
+        return board[0][2]
+
+    # to check vertically
+    for i in range(3):
+        total = []
+        for column in board:
+            total.append(column[i])
+        if len(set(total)) == 1:
+            return total[0]
+
+    # raise NotImplementedError
 
 
 def terminal(board):
