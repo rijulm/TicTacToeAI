@@ -11,4 +11,3 @@ print(winner(a))
 
 print(result(a, action))
 print(result(result(a, action), action))
-
