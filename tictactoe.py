@@ -153,6 +153,7 @@ def utility(board):
     else:
         return 0
 
+
     # raise NotImplementedError
 
 
