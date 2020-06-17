@@ -87,18 +87,24 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
+    finalpiece = EMPTY
+    isWon = False
+
     # first we can check horizontally
     for row in board:
         if len(set(row)) == 1:
-            return row[0]
+            isWon = True
+            finalpiece=  row[0]
 
     # check diagonally
-    if board[0][0] == board[1][1] and board[1][1] ==  board[2][2] and board[0][0] == board[2][2]:
+    if board[0][0] == board[1][1] and board[1][1] == board[2][2] and board[0][0] == board[2][2]:
         # first diagonal
-        return board[0][0]
-    if board[0][2] == board[1][1] and board[1][1] ==  board[2][0] and board[0][2] == board[2][0]:
+        isWon = True
+        finalpiece = board[0][0]
+    if board[0][2] == board[1][1] and board[1][1] == board[2][0] and board[0][2] == board[2][0]:
         # second diagonal
-        return board[0][2]
+        isWon = True
+        finalpiece = board[0][2]
 
     # to check vertically
     for i in range(3):
@@ -106,8 +112,13 @@ def winner(board):
         for column in board:
             total.append(column[i])
         if len(set(total)) == 1:
-            return total[0]
+            isWon = True
+            finalpiece = total[0]
 
+    if isWon:
+        return finalpiece
+    else:
+        return None
     # raise NotImplementedError
 
 
@@ -115,6 +126,9 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
+    # check two states - winner or cells full
+
+
     raise NotImplementedError
 
 

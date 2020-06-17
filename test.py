@@ -1,8 +1,8 @@
 EMPTY = None
 
-a = [['a', EMPTY, EMPTY],
-    ['a', EMPTY, EMPTY],
-     ['a', EMPTY, EMPTY]]
+a = [[EMPTY, EMPTY, EMPTY],
+    [EMPTY, EMPTY, EMPTY],
+     [EMPTY, EMPTY, EMPTY]]
 
 action = (1,0)
 from tictactoe import actions, result, winner
