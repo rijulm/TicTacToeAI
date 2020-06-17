@@ -94,7 +94,7 @@ def winner(board):
     for row in board:
         if len(set(row)) == 1:
             isWon = True
-            finalpiece=  row[0]
+            finalpiece = row[0]
 
     # check diagonally
     if board[0][0] == board[1][1] and board[1][1] == board[2][2] and board[0][0] == board[2][2]:
@@ -126,10 +126,20 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    # check two states - winner or cells full
+    # first we can check for any empty cells - that means the game is still going
+    isfinished = True
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == EMPTY:
+                isfinished = False
 
+    # two states - winner or cells full
+    if isfinished:
+        return True
+    if not isfinished:
+        return False
 
-    raise NotImplementedError
+    # raise NotImplementedError
 
 
 def utility(board):
